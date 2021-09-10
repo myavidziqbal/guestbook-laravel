@@ -16,7 +16,7 @@ class GuestController extends Controller
         if ($request->has('search')){
             $data = Guest::where('nama','LIKE','%'.$request->search.'%')->paginate(5);
         } else {
-            $data = Guest::paginate(5);
+            $data = Guest::paginate(15);
         }
     
         
@@ -30,6 +30,11 @@ class GuestController extends Controller
 
     public function insertdata(Request $request){
         
+            $this->validate($request,[
+                'nama' => 'required|min:5|max:20',
+                'telepon' => 'required|min:11|max:14',
+            ]);
+    
         // dd($request->all());
         $data = Guest::create($request->all());
         if($request->hasFile('foto')){
