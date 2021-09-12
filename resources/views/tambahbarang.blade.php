@@ -16,7 +16,7 @@
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">No Surat</label>
                     <input type="text" name="nosurat" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    @error('nama')
+                    @error('nosurat')
                       <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
@@ -31,10 +31,10 @@
                     <label for="exampleInputEmail1" class="form-label">Penerima</label>
                     <select class="form-select" name="penerima" aria-label="Default select example">
                       <option selected>Pilih Penerima</option>
-                      <option value="laki">Omad</option>
-                      <option value="laki">Mutamad</option>
-                      <option value="laki">Suyanto</option>
-                      <option value="laki">Badru</option>
+                      <option value="Omad">Omad</option>
+                      <option value="Mutamad">Mutamad</option>
+                      <option value="Suyanto">Suyanto</option>
+                      <option value="Badru">Badru</option>
                     </select>  
                   </div>
                   <div class="mb-3">

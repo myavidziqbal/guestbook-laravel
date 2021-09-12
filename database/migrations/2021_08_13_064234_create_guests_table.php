@@ -16,9 +16,10 @@ class CreateGuestsTable extends Migration
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->enum('jenis_kel',['laki','perempuan']);
+            $table->string('tujuan');
+            $table->string('alamat');
+            $table->string('perusahaan');
             $table->bigInteger('telepon');
-            $table->string('foto');
             $table->timestamps();
             
         });

@@ -42,14 +42,30 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Jumlah Barang Datang</span>
+                <span class="info-box-number">
+                  {{ $jumlahbarang }}
+                  <small>Unit</small>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
-              <div class="info-box-content">
+              {{-- <div class="info-box-content">
                 <span class="info-box-text">Jumlah Tamu Laki-laki</span>
                 <span class="info-box-number">{{ $jumlahtamulaki}}</span>
-              </div>
+              </div> --}}
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
@@ -63,10 +79,10 @@
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
-              <div class="info-box-content">
+              {{-- <div class="info-box-content">
                 <span class="info-box-text">Jumlah Tamu Perempuan</span>
                 <span class="info-box-number">{{$jumlahtamuperempuan}}</span>
-              </div>
+              </div> --}}
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
@@ -87,7 +103,7 @@
           <!-- /.col -->
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
@@ -220,11 +236,11 @@
             <!-- /.card -->
           </div>
           <!-- /.col -->
-        </div>
+        </div> --}}
         <!-- /.row -->
 
         <!-- Main row -->
-        <div class="row">
+        {{-- <div class="row">
           <!-- Left col -->
           <div class="col-md-8">
             <!-- MAP & BOX PANE -->
@@ -850,7 +866,7 @@
             <!-- /.card -->
           </div>
           <!-- /.col -->
-        </div>
+        </div> --}}
         <!-- /.row -->
       </div><!--/. container-fluid -->
     </section>

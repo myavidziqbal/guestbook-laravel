@@ -89,17 +89,20 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($data as $row)
+          @php
+              $no = 1;
+          @endphp
+          @foreach ($data as $index => $row)
           <tr>
-            <th scope="row">{{$row->id}}</th>
+            <th scope="row">{{$no++}}</th>
             <td>{{$row->nosurat}}</td>
             <td>{{$row->pengirim}}</td>
             <td>{{$row->penerima}}</td>
             <td>{{$row->tujuan}}</td>
             <td>{{$row->created_at->format('d-m-Y')}}</td>
             <td>
-              <button type="button" class="btn btn-danger">Hapus</button>
-              <button type="button" class="btn btn-warning">Edit</button>
+              <a href="/tampilbarang/{{$row->id}}" type="button" class="btn btn-warning">Edit</a>
+              <a href="/deletebarang/{{$row->id}}" type="button" class="btn btn-danger">Hapus</a>
             </td>
           </tr>
           @endforeach

@@ -21,14 +21,35 @@
                     @enderror
                   </div>
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
-                    <select class="form-select" name="jenis_kel" aria-label="Default select example">
+                    <label for="exampleInputEmail1" class="form-label">Tujuan</label>
+                    <input type="text" name="tujuan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    @error('nama')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+                    <textarea type="text" name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    @error('nama')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Perusahaan</label>
+                    <input type="text" name="perusahaan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    @error('nama')
+                      <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                  </div>
+                  {{-- <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Tujuan</label>
+                    <select class="form-select" name="tujua" aria-label="Default select example">
                       <option selected>Pilih Jenis Kelamin</option>
                       <option value="laki">Laki-laki</option>
                       <option value="perempuan">Perempuan</option>
                     </select>
                     
-                  </div>
+                  </div> --}}
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">No Telephone</label>
                     <input type="number" name="telepon" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -36,10 +57,10 @@
                       <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Masukan Foto</label>
                     <input type="file" name="foto" class="form-control" >
-                  </div>
+                  </div> --}}
 
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

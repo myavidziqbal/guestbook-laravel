@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Item;
 use App\Models\Guest;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
@@ -20,10 +21,10 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
 
     $jumlahtamu = Guest::count();
-    $jumlahtamulaki = Guest::where('jenis_kel','laki')->count();
-    $jumlahtamuperempuan = Guest::where('jenis_kel','perempuan')->count();
+    $jumlahbarang = Item::count();
+    // $jumlahtamuperempuan = Guest::where('jenis_kel','perempuan')->count();
 
-    return view('welcome', compact('jumlahtamu','jumlahtamulaki','jumlahtamuperempuan'));
+    return view('welcome', compact('jumlahtamu','jumlahbarang'));
 })->middleware('auth');
 
 Route::get('/tamu', [GuestController::class, 'index'])->name('tamu')->middleware('auth');
@@ -71,3 +72,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/databarang', [ItemController::class, 'barang'])->name('databarang');
 Route::get('/tambahbarang', [ItemController::class, 'tambahbarang'])->name('tambahbarang');
 Route::post('/insertbarang', [ItemController::class, 'insertbarang'])->name('insertbarang');
+
+
+Route::get('/tampilbarang/{id}', [ItemController::class, 'tampilbarang'])->name('tampilbarang');
+Route::post('/updatebarang/{id}', [ItemController::class, 'updatebarang'])->name('updatebarang');
+
+Route::get('/deletebarang/{id}', [ItemController::class, 'deletebarang'])->name('deletebarang');
+
+

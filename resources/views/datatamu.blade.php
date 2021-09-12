@@ -86,8 +86,9 @@
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Foto</th>
-                <th scope="col">Jenis Kelamin</th>
+                <th scope="col">Tujuan</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Perusahaan</th>
                 <th scope="col">Telepon</th>
                 <th scope="col">Dibuat</th>
                 <th scope="col">Aksi</th>
@@ -102,10 +103,12 @@
           <tr>
             <th scope="row">{{$index + $data->firstItem() }}</th>
             <td>{{$row->nama}}</td>
-            <td>
+            {{-- <td>
               <img src="{{asset('fototamu/'.$row->foto)}}" alt="" style="width: 40px">
-            </td>
-            <td>{{$row->jenis_kel}}</td>
+            </td> --}}
+            <td>{{$row->tujuan}}</td>
+            <td>{{$row->alamat}}</td>
+            <td>{{$row->perusahaan}}</td>
             <td>{{$row->telepon}}</td>
             <td>{{$row->created_at->format('d-m-Y')}}</td>
             <td>

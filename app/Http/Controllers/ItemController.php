@@ -21,5 +21,26 @@ class ItemController extends Controller
     public function insertbarang(Request $request){
         
         Item::create($request->all());
+        return redirect()->route('databarang')->with('success','Data Berhasil Di input');
+    }
+
+    public function tampilbarang($id){
+        $data = Item::find($id);
+        // dd($data);
+        return view('tampilbarang', compact('data'));
+    }
+
+    public function updatebarang(Request $request, $id){
+        $data = Item::find($id);
+        $data->update($request->all());
+
+        return redirect()->route('databarang')->with('success','Data Berhasil Di update');
+    }
+
+    public function deletebarang($id){
+        $data = Item::find($id);
+        $data->delete();
+
+        return redirect()->route('databarang')->with('success','Data Berhasil Di delete');
     }
 }
