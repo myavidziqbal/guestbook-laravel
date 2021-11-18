@@ -26,7 +26,7 @@
     </div><!-- /.container-fluid -->
   </div>
 
-  <div class="container">
+  <div class="container-fluid">
     <a href="/tambahtamu" class="btn btn-primary">Tambah+</a>
     
   
@@ -74,28 +74,39 @@
           </form>
           </div>
         </div>
-  
+
+    <div class="container-fluid">
     <div class="row">
       {{-- @if ($message = Session::get('success'))
           <div class="alert alert-success" role="alert">
             {{ $message }}
           </div>
       @endif --}}
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
-              <tr>
+              <!-- <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Tujuan</th>
                 <th scope="col">Alamat</th>
                 <th scope="col">Perusahaan</th>
-                <th scope="col">Telepon</th>
+                <th scope="col">No Plat Kendaraan</th>
                 <th scope="col">Dibuat</th>
                 <th scope="col">Aksi</th>
+              </tr> -->
+              <tr>
+                <th style="width: 2%">No</th>
+                <th style="width: 8%">Nama</th>
+                <th style="width: 5%">Tujuan</th>
+                <th style="width:  10%">Alamat5</th>
+                <th style="width:  5%">Perusahaan</th>
+                <th style="width:  5%">No Telp</th>
+                <th style="width:  10%">Dibuat</th>
+                <th style="width:  12%">Aksi</th>
               </tr>
             </thead>
           
-  
+        <tbody>
           @php
               $no = 1;
           @endphp
@@ -103,17 +114,17 @@
           <tr>
             <th scope="row">{{$index + $data->firstItem() }}</th>
             <td>{{$row->nama}}</td>
-            {{-- <td>
+            <!-- <td>
               <img src="{{asset('fototamu/'.$row->foto)}}" alt="" style="width: 40px">
-            </td> --}}
+            </td> -->
             <td>{{$row->tujuan}}</td>
             <td>{{$row->alamat}}</td>
             <td>{{$row->perusahaan}}</td>
-            <td>{{$row->telepon}}</td>
+            <td>0{{$row->telepon}}</td>
             <td>{{$row->created_at->format('d-m-Y')}}</td>
             <td>
               <a href="/tampildata/{{$row->id}}" class="btn btn-warning">Edit</a>
-              {{-- <a href="/delete/{{$row->id}}" type="button" class="btn btn-danger">Hapus</a> --}}
+              <!-- <a href="/delete/{{$row->id}}" type="button" class="btn btn-danger">Hapus</a> -->
               <a href="#" class="btn btn-danger delete" data-id="{{$row->id}}" data-nama="{{$row->nama}}">Hapus</a>
   
             </td>              
@@ -127,7 +138,7 @@
         
       
   </div>
-
+  </div>
 </div>
 
 

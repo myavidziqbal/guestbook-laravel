@@ -32,7 +32,7 @@ class GuestController extends Controller
         
             $this->validate($request,[
                 'nama' => 'required|min:5|max:20',
-                'telepon' => 'required|min:11|max:14',
+                'telepon' => 'required|min:7|max:14',
             ]);
     
         // dd($request->all());

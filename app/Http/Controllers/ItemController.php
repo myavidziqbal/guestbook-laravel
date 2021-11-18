@@ -7,9 +7,15 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function barang(){
+    public function barang(Request $request){
 
-        $data = Item::all();
+        if ($request->has('search')){
+            $data = Item::where('nama','LIKE','%'.$request->search.'%')->paginate(5);
+        } else {
+            $data = Item::paginate(15);
+        }
+
+        // $data = Item::paginate(5);
         return view('databarang', compact('data'));
     
     }

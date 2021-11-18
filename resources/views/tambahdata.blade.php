@@ -43,7 +43,7 @@
                   </div>
                   {{-- <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Tujuan</label>
-                    <select class="form-select" name="tujua" aria-label="Default select example">
+                    <select class="form-select" name="tujuan" aria-label="Default select example">
                       <option selected>Pilih Jenis Kelamin</option>
                       <option value="laki">Laki-laki</option>
                       <option value="perempuan">Perempuan</option>
@@ -57,10 +57,10 @@
                       <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                   </div>
-                  {{-- <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Masukan Foto</label>
                     <input type="file" name="foto" class="form-control" >
-                  </div> --}}
+                  </div> -->
 
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

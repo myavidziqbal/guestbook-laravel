@@ -13,7 +13,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Buku Keluar Masuk Barang & Surat</h1>
+          <h1 class="m-0">WORK ORDER</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -25,7 +25,7 @@
     </div><!-- /.container-fluid -->
   </div>
   <div class="container-fluid">
-    <a href="/tambahbarang" class="btn btn-primary">Tambah+</a>
+    <a href="/tambahwo" class="btn btn-primary">Tambah+</a>
     
   
       <div class="row g-3 align-items-center mt-2 mb-2">
@@ -78,24 +78,18 @@
     <div class="row">
       <table class="table table-bordered">
         <thead>
-          <!-- <tr>
-            <th scope="col">#</th>
-            <th scope="col">No Surat</th>
-            <th scope="col">Pengirim</th>
-            <th scope="col">Penerima</th>
-            <th scope="col">Tujuan</th>
-            <th scope="col">Tanggal</th>
-            <th scope="col">Aksi</th>
-          </tr> -->
           <tr>
-                <th style="width: 1%">#</th>
-                <th style="width: 8%">No Surat</th>
-                <th style="width: 5%">Pengirim</th>
-                <th style="width:  5%">Penerima</th>
-                <th style="width:  15%">Tujuan</th>
-                <th style="width:  7%">Tanggal</th>
-                <th style="width:  10%">Aksi</th>
-              </tr>
+            <th style="width: 1%">#</th>
+            <th style="width: 1%">Tanggal</th>
+            <th style="width: 5%">Peminta WO</th>
+            <th style="width: 1%">Prioritas</th>
+            <th style="width: 2%">Penerima WO</th>
+            <th style="width: 3%">Departemen</th>
+            <th style="width: 10%">Deskripsi Masalah</th>
+            <th style="width: 2%">Tindakan</th>
+            <th style="width: 1%">status</th>
+            <th style="width: 6%">Aksi</th>
+          </tr>
         </thead>
         <tbody>
           @php
@@ -103,29 +97,38 @@
           @endphp
           @foreach ($data as $index => $row)
           <tr>
-          <th scope="row">{{$index + $data->firstItem() }}</th>
-            <td>{{$row->nosurat}}</td>
-            <td>{{$row->pengirim}}</td>
-            <td>{{$row->penerima}}</td>
-            <td>{{$row->tujuan}}</td>
-            <td>{{$row->created_at->format('d-m-Y')}}</td>
-            <td>
-              <a href="/tampilbarang/{{$row->id}}" type="button" class="btn btn-warning">Edit</a>
-              <a href="#" class="btn btn-danger delete" data-id="{{$row->id}}" data-nosurat="{{$row->nosurat}}">Hapus</a>
-            </td>
-          </tr>
+          <th scope="row">{{$no++}}</th>
+              <td>{{$row->created_at->format('d-m-Y')}}</td>
+              <td> {{ $row->name_req}}</td>
+              <td> {{ $row->priority}}</td>
+              <td> {{ $row->name_receipt}}</td>
+              <td> {{ $row->dept}}</td>
+              <td> {{ $row->issue}}</td>
+              <td> {{ $row->action}}</td>
+              <td> <span class="badge {{ ($row->status == 1) ? 'badge-danger' : 'badge-success' }}">{{( $row->status == 1) ? 'Open' : 'Close' }}</span> </td>
+              
+              <td>
+                  <a href="/tampilwo/{{$row->id}}" class="btn btn-warning"><i class="fas  fa-check-square"></i></a>
+                  <!-- <i class="fas fa-sign-out-alt"></i> -->
+                  <!-- <a href="#" class="btn btn-danger finish" data-id="{{$row->id}}" data-nama="{{$row->name_req}}">Selesai</a> -->
+                  <form action="/selesaiwo/{{$row->id}}" method="POST">
+                  @csrf
+                    <!-- <button class="btn btn-success"><i class="fas fa-flag-checkered"></i></button> -->
+                    <button type="submit" class="btn btn-success" onclick="return confirm('Apakah Work Order Sudah Selesai!');">
+                    <i class="fas fa-flag-checkered"></i>
+                    </button>
+                  </form>
+                  
+                </td>
+            </tr>
           @endforeach
-          
+            
         </tbody>
       </table>
-      {{$data->links()}}
+
     </div>
   </div>
 </div>
-</div>
-
-
-
 
 @endsection
 
@@ -143,29 +146,39 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
 -->
+
 </body>
 <script>
-$('.delete').click(function(){
-  var barangid = $(this).attr('data-id');
-  var barang = $(this).attr('data-nosurat');
-  swal({
-        title: "Yakin ?",
-        text: "Kamu akan hapus data dengan nama "+barang+" ",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          window.location = "/delete/"+barangid+" "
-          swal("Data berhasil di hapus!", {
-            icon: "success",
-          });
-        } else {
-          swal("Data tidak jadi dihapus");
-        }
-  });
-});
+// $('.finish').click(function(){
+//   var woid = $(this).attr('data-id');
+//   var nama = $(this).attr('data-nama');
+//   document.querySelector(".first").addEventListener("click", function() {
+//   swal({
+//     title: "Show Two Buttons Inside the Alert",
+//     showCancelButton: true,
+//     confirmButtonText: "Confirm",
+//     confirmButtonColor: "#00ff99",
+//     cancelButtonColor: "#ff0099"
+//   });
+// });
+//   swal({
+//         title: "Yakin ?",
+//         text: "Kamu akan update data dengan nama "+nama+" ",
+//         icon: "warning",
+//         buttons: true,
+//         dangerMode: true,
+//       })
+//       .then((isConfirmed) => {
+//         if (isConfirmed) {
+//           window.location = "/selesaiwo/"+tamuid+" "
+//           swal("Data berhasil di Update!", {
+//             icon: "success",
+//           });
+//         } else {
+//           swal("Data tidak jadi di update");
+//         }
+//   });
+// });
         
 
 </script>

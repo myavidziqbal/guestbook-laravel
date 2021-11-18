@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WorkOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +80,12 @@ Route::post('/updatebarang/{id}', [ItemController::class, 'updatebarang'])->name
 
 Route::get('/deletebarang/{id}', [ItemController::class, 'deletebarang'])->name('deletebarang');
 
+//work order
 
+Route::get('/workorder', [WorkOrderController::class, 'workorder'])->name('workorder');
+Route::get('/tambahwo', [WorkOrderController::class, 'tambahwo'])->name('tambahwo');
+
+Route::post('/insertwo', [WorkOrderController::class, 'insertwo'])->name('insertwo');
+Route::get('/tampilwo/{id}', [WorkOrderController::class, 'tampilwo'])->name('tampilwo');
+Route::post('/updatewo/{id}', [WorkOrderController::class, 'updatewo'])->name('updatewo');
+Route::post('/selesaiwo/{id}', [WorkOrderController::class, 'selesaiwo'])->name('selesaiwo');
